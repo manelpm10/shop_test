@@ -15,7 +15,7 @@ final class CartItemCreatorTest extends CartUnitTestCase
 
     public function setUp()
     {
-        $this->cartItemCreator = new CartItemCreator($this->getCartLineRepository());
+        $this->cartItemCreator = new CartItemCreator($this->getCartItemRepository());
     }
 
     /**

@@ -5,8 +5,12 @@ services:
 
     module_cart.cart.remover:
         class: Module\Cart\Service\Remove\CartRemover
-        arguments: ["@module_cart.cart.repository.mysql"]
+        arguments: ["@module_cart.cart.repository.mysql", "@module_cart.cart.item.repository.mysql"]
 
     module_cart.cart.item.creator:
         class: Module\Cart\Service\Create\CartItemCreator
-        arguments: ["@module_cart.cart.line.repository.mysql"]
+        arguments: ["@module_cart.cart.item.repository.mysql"]
+
+    module_cart.cart.item.remover:
+        class: Module\Cart\Service\Remove\CartItemRemover
+        arguments: ["@module_cart.cart.item.repository.mysql"]

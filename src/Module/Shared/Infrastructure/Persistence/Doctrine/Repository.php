@@ -4,7 +4,7 @@ namespace Module\Shared\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
-use Module\Shared\Types\Aggregate\AggregateRoot;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * Class Repository.
@@ -20,6 +20,8 @@ abstract class Repository
      * @var EntityRepository
      */
     protected $repository;
+
+    protected $isTransactionOpen = false;
 
     /**
      * @param EntityManager $entityManager
@@ -42,14 +44,35 @@ abstract class Repository
 
     protected function persist($entity): void
     {
-        $this->entityManager()->persist($entity);
-        $this->entityManager()->flush($entity);
+        $this->entityManager->persist($entity);
+        $this->entityManager->flush();
     }
 
     protected function remove($entity): void
     {
-        $this->entityManager()->remove($entity);
-        $this->entityManager()->flush($entity);
+        $entity = $this->entityManager()->merge($entity);
+        $this->entityManager->remove($entity);
+        $this->entityManager->flush();
+    }
+
+    public function beginTransaction(): void
+    {
+        $this->entityManager->beginTransaction();
+        $this->isTransactionOpen = true;
+    }
+
+    public function commit(): void
+    {
+        if ($this->isTransactionOpen)
+        {
+            $this->entityManager->commit();
+            $this->isTransactionOpen = false;
+        }
+    }
+
+    protected function queryBuilder(): QueryBuilder
+    {
+        return $this->entityManager->createQueryBuilder();
     }
 
     abstract protected function getRepositoryName(): string;

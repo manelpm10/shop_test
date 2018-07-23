@@ -1,15 +1,11 @@
-AppBundle\Entity\CartLine:
+AppBundle\Entity\CartItem:
     type: entity
-    table: cart_line
+    table: cart_item
 
     id:
         id:
-            type: integer
+            type: string
             id: true
-            options:
-                unsigned: true
-            generator:
-                strategy: AUTO
 
     fields:
         cartId:

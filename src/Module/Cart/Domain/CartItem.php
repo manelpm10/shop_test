@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Module\Cart\Domain;
 
 use Module\Shared\Domain\CartId;
-use Module\Shared\Domain\CartLineId;
+use Module\Shared\Domain\CartItemId;
 use Module\Shared\Domain\SellerProductId;
 
 final class CartItem
@@ -16,7 +16,7 @@ final class CartItem
     private $quantity;
 
     public function __construct(
-        CartLineId $id,
+        CartItemId $id,
         CartId $cartId,
         SellerProductId $sellerProductId,
         CartItemQuantity $quantity
@@ -29,7 +29,7 @@ final class CartItem
     }
 
     public static function create(
-        CartLineId $id,
+        CartItemId $id,
         CartId $cartId,
         SellerProductId $sellerProductId,
         CartItemQuantity $quantity
@@ -40,7 +40,7 @@ final class CartItem
         return new self($id, $cartId, $sellerProductId, $quantity);
     }
 
-    public function id(): CartLineId
+    public function id(): CartItemId
     {
         return $this->id;
     }

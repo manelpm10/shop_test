@@ -11,7 +11,7 @@ use FOS\RestBundle\Util\Codes;
 use Module\Cart\Contract\Response\CartItemCreatedResponse;
 use Module\Cart\Domain\CartItemQuantity;
 use Module\Shared\Domain\CartId;
-use Module\Shared\Domain\CartLineId;
+use Module\Shared\Domain\CartItemId;
 use Module\Shared\Domain\SellerProductId;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -32,7 +32,7 @@ final class CartItemPostController extends FOSRestController
      *
      * @return CartItemCreatedResponse
      *
-     * @Route("/cart/{cart_id}/item", methods="GET")
+     * @Route("/cart/{cart_id}/item", methods="POST")
      * @View(StatusCode=Codes::HTTP_CREATED)
      */
     public function __invoke(Request $request)
@@ -40,12 +40,12 @@ final class CartItemPostController extends FOSRestController
         // Todo Check given user via Authorization HTTP Header has permissions over the cart.
         // if (!USER_PERMISSIONS) { RETURN 401; }
 
-        $cartLineId = CartLineId::generate();
+        $cartItemId = CartItemId::generate();
         $cartId = new CartId($request->get('cart_id'));
         $sellerProductId = new SellerProductId($request->get('seller_product_id'));
         $quantity = new CartItemQuantity($request->get('quantity'));
 
         return $this->container->get('module_cart.cart.item.creator')
-            ->__invoke($cartLineId, $cartId, $sellerProductId, $quantity);
+            ->__invoke($cartItemId, $cartId, $sellerProductId, $quantity);
     }
 }

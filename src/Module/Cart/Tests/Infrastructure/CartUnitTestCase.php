@@ -4,7 +4,7 @@ namespace Module\Cart\Tests\Infrastructure;
 
 use Module\Cart\Domain\Cart;
 use Module\Cart\Domain\CartItem;
-use Module\Cart\Model\CartLineRepository;
+use Module\Cart\Model\CartItemRepository;
 use Module\Cart\Model\CartRepository;
 
 /**
@@ -13,7 +13,7 @@ use Module\Cart\Model\CartRepository;
 class CartUnitTestCase extends \PHPUnit_Framework_TestCase
 {
     private $cartRepository;
-    private $cartLineRepository;
+    private $cartItemRepository;
 
     protected function getCartRepository(): \PHPUnit_Framework_MockObject_MockObject
     {
@@ -22,10 +22,10 @@ class CartUnitTestCase extends \PHPUnit_Framework_TestCase
         );
     }
 
-    protected function getCartLineRepository(): \PHPUnit_Framework_MockObject_MockObject
+    protected function getCartItemRepository(): \PHPUnit_Framework_MockObject_MockObject
     {
-        return $this->cartLineRepository = $this->cartLineRepository ?: $this->createMock(
-            CartLineRepository::class
+        return $this->cartItemRepository = $this->cartItemRepository ?: $this->createMock(
+            CartItemRepository::class
         );
     }
 
@@ -39,7 +39,7 @@ class CartUnitTestCase extends \PHPUnit_Framework_TestCase
 
     protected function shouldSaveCartItem(CartItem $cartItem): void
     {
-        $this->getCartLineRepository()
+        $this->getCartItemRepository()
             ->expects($this->once())
             ->method('save')
             ->with($cartItem);

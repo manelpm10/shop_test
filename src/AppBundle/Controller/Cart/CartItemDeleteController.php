@@ -10,12 +10,12 @@ use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Util\Codes;
 use Module\Cart\Contract\Response\CartCreatedResponse;
 use Module\Shared\Domain\CartId;
-use Module\Shared\Domain\CustomerId;
+use Module\Shared\Domain\CartItemId;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-final class CartPostController extends FOSRestController
+final class CartItemDeleteController extends FOSRestController
 {
     /**
      * @ApiDoc(
@@ -27,15 +27,15 @@ final class CartPostController extends FOSRestController
      *
      * @return CartCreatedResponse
      *
-     * @Route("/cart", methods="POST")
-     * @View(StatusCode=Codes::HTTP_CREATED)
+     * @Route("/cart/{cart_id}/item/{cart_item_id}", methods="DELETE")
+     * @View(StatusCode=Codes::HTTP_OK)
      */
     public function __invoke(Request $request)
     {
         // Todo Get from Authorization HTTP Header and validate against oAuth service.
-        $customerId = new CustomerId(1);
-        $cartId = CartId::generate();
+        $cartId = new CartId($request->get('cart_id'));
+        $cartItemId = new CartItemId($request->get('cart_item_id'));
 
-        return $this->container->get('module_cart.cart.creator')->__invoke($cartId, $customerId);
+        return $this->container->get('module_cart.cart.item.remover')->__invoke($cartId, $cartItemId);
     }
 }

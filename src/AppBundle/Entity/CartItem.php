@@ -3,9 +3,9 @@
 namespace AppBundle\Entity;
 
 /**
- * CartLine
+ * CartItem
  */
-class CartLine
+class CartItem
 {
     /**
      * @var int
@@ -55,7 +55,7 @@ class CartLine
      *
      * @param int $cartId
      *
-     * @return CartLine
+     * @return CartItem
      */
     public function setCartId($cartId)
     {
@@ -79,7 +79,7 @@ class CartLine
      *
      * @param int $sellerProductId
      *
-     * @return CartLine
+     * @return CartItem
      */
     public function setSellerProductId($sellerProductId)
     {
@@ -103,7 +103,7 @@ class CartLine
      *
      * @param int $quantity
      *
-     * @return CartLine
+     * @return CartItem
      */
     public function setQuantity($quantity)
     {
