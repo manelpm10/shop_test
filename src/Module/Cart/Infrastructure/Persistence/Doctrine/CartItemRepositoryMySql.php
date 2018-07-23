@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Module\Cart\Infrastructure\Persistence\Doctrine;
 
 use AppBundle\Entity\CartItem as BaseCartItem;
+use AppBundle\Entity\SellerProduct;
 use Module\Cart\Domain\CartItem;
 use Module\Cart\Domain\CartItemQuantity;
 use Module\Cart\Model\CartItemRepository;
@@ -34,6 +35,18 @@ class CartItemRepositoryMySql extends Repository implements CartItemRepository
                 new CartItemQuantity($cartItemEntity->getQuantity())
             );
         }
+    }
+
+    public function findByCartId(CartId $cartId): array
+    {
+        return $this->queryBuilder()
+                ->select('ci, sp.price, sp.sellerId')
+                ->from(BaseCartItem::class, 'ci')
+                ->innerJoin(SellerProduct::class, 'sp', 'WITH', 'ci.sellerProductId = sp.id')
+                ->where('ci.cartId = :cartId')
+                ->setParameter('cartId', $cartId)
+                ->getQuery()
+                ->execute();
     }
 
     public function save(CartItem $cartItem): void

@@ -9,6 +9,7 @@ use Module\Shared\Domain\CartItemId;
 interface CartItemRepository
 {
     public function find(CartItemId $id): ?CartItem;
+    public function findByCartId(CartId $cartId): array;
     public function save(CartItem $cartItem): void;
     public function delete(CartItem $cartItem): void;
     public function deleteByCartId(CartId $cartId): void;
