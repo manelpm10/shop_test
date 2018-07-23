@@ -31,6 +31,8 @@ final class CartItemCreator
         $cartItem = CartItem::create($cartItemId, $cartId, $sellerProductId, $quantity);
         $this->repository->save($cartItem);
 
+        // TODO If the seller product already exist in cart, update quantity instead of add row.
+
         return new CartItemCreatedResponse($cartItem->id()->__toString());
     }
 }
