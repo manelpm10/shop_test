@@ -1,0 +1,4 @@
+imports:  
+  - { resource: "order_infrastructure.yml" }
+  - { resource: "order_service_private.yml" }
+  - { resource: "order_service_public.yml" }

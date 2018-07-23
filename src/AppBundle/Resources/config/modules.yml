@@ -1,2 +1,3 @@
 imports:
     - { resource: "../../../Module/Cart/Infrastructure/DependencyInjection/cart_module.yml" }
+    - { resource: "../../../Module/Order/Infrastructure/DependencyInjection/order_module.yml" }

@@ -1,0 +1,4 @@
+services:
+    module_order.order.creator:
+        class: Module\Order\Service\Create\OrderCreator
+        arguments: ["@module_order.order.repository.mysql"]

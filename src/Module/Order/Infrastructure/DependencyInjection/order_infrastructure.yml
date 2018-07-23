@@ -1,0 +1,5 @@
+services:
+    module_order.order.repository.mysql:
+        public: false
+        class: Module\Order\Infrastructure\Persistence\Doctrine\OrderRepositoryMySql
+        arguments: ["@doctrine.orm.entity_manager"]

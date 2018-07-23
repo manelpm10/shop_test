@@ -32,6 +32,19 @@ class Orders
      */
     private $status;
 
+    public function __construct(string $id, string $cartId, float $totalAmount, string $status, int $paymentId)
+    {
+        $this->id = $id;
+        $this->cartId = $cartId;
+        $this->totalAmount = $totalAmount;
+        $this->status = $status;
+        $this->paymentId = $paymentId;
+    }
+
+    public static function create(string $id, string $cartId, float $totalAmount, string $status, int $paymentId)
+    {
+        return new self( $id, $cartId, $totalAmount, $status, $paymentId);
+    }
 
     /**
      * Get id.
