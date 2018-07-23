@@ -26,7 +26,7 @@ Idenfified verbs:
 
 Database schema:
 ---------------
-![Database Schema](https://ibb.co/e4QS3d)
+![Database Schema](https://image.ibb.co/iBLGwy/promofarma_db.png)
 
 Requirements
 ------------
