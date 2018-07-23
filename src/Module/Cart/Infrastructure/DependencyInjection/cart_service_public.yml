@@ -11,6 +11,10 @@ services:
         class: Module\Cart\Service\Calculator\CartTotalAmountCalculator
         arguments: ["@module_cart.cart.item.repository.mysql"]
 
+    module_cart.cart.total.amount.by.seller.calculator:
+        class: Module\Cart\Service\Calculator\CartTotalAmountBySellerCalculator
+        arguments: ["@module_cart.cart.item.repository.mysql"]
+
     module_cart.cart.item.creator:
         class: Module\Cart\Service\Create\CartItemCreator
         arguments: ["@module_cart.cart.item.repository.mysql"]
