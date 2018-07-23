@@ -1,0 +1,16 @@
+AppBundle\Entity\Cart:
+    type: entity
+    table: cart
+
+    id:
+        id:
+            type: string
+            id: true
+
+    fields:
+        customerId:
+            column: customer_id
+            type: integer
+        createdAt:
+            column: created_at
+            type: datetime

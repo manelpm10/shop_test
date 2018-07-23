@@ -1,0 +1,5 @@
+services:
+  module_cart.cart.repository.mysql:
+    public: false
+    class: Module\Cart\Infrastructure\Persistence\Doctrine\CartRepositoryMySql
+    arguments: ["@doctrine.orm.entity_manager"]

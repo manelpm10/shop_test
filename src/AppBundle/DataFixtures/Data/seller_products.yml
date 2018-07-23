@@ -1,0 +1,40 @@
+-
+  id: 1
+  seller_id: 1
+  product_id: 1
+  price: 10.10
+-
+  id: 2
+  seller_id: 1
+  product_id: 2
+  price: 20.10
+-
+  id: 3
+  seller_id: 1
+  product_id: 3
+  price: 30.10
+-
+  id: 4
+  seller_id: 1
+  product_id: 4
+  price: 40.10
+-
+  id: 5
+  seller_id: 2
+  product_id: 1
+  price: 10.20
+-
+  id: 6
+  seller_id: 2
+  product_id: 2
+  price: 20.20
+-
+  id: 7
+  seller_id: 2
+  product_id: 3
+  price: 30.20
+-
+  id: 8
+  seller_id: 2
+  product_id: 4
+  price: 40.20

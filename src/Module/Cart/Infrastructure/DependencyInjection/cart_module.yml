@@ -1,0 +1,4 @@
+imports:  
+  - { resource: "cart_infrastructure.yml" }
+  - { resource: "cart_service_private.yml" }
+  - { resource: "cart_service_public.yml" }

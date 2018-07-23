@@ -1,0 +1,36 @@
+-
+  id: 1
+  customer_id: 1
+  country_id: 1
+  province_id: 1
+  city_id: 1
+  postal_code: 08001
+  street: "Elm Street"
+  is_default: 1
+-
+  id: 2
+  customer_id: 1
+  country_id: 2
+  province_id: 2
+  city_id: 2
+  postal_code: 08002
+  street: "Elm Street 2"
+  is_default: 0
+-
+  id: 3
+  customer_id: 2
+  country_id: 3
+  province_id: 3
+  city_id: 3
+  postal_code: 08003
+  street: "Elm Street 3"
+  is_default: 0
+-
+  id: 4
+  customer_id: 2
+  country_id: 4
+  province_id: 4
+  city_id: 4
+  postal_code: 08004
+  street: "Elm Street 4"
+  is_default: 1

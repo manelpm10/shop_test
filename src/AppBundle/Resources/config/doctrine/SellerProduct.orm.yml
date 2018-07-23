@@ -1,0 +1,26 @@
+AppBundle\Entity\SellerProduct:
+    type: entity
+    table: seller_product
+
+    id:
+        id:
+            type: integer
+            id: true
+            options:
+                unsigned: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        sellerId:
+            type: integer
+            column: seller_id
+        productId:
+            type: integer
+            column: product_id
+        price:
+            type: decimal
+            precision: 10
+            scale: '2'
+
+    lifecycleCallbacks: {  }

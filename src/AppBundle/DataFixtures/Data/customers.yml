@@ -1,0 +1,10 @@
+-
+  id: 1
+  name: "Elon Musk"
+  email: "elon.musk@gmail.com"
+  credit_card: ""
+-
+  id: 2
+  name: "Larry Page"
+  email: "larry.page@gmail.com"
+  credit_card: ""

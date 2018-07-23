@@ -1,0 +1,38 @@
+AppBundle\Entity\CustomerAddress:
+    type: entity
+    table: customer_address
+
+    id:
+        id:
+            type: integer
+            id: true
+            options:
+                unsigned: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        customerId:
+            type: integer
+            column: customer_id
+        street:
+            type: string
+            length: 255
+        provinceId:
+            type: integer
+            column: province_id
+        cityId:
+            type: integer
+            column: city_id
+        countryId:
+            type: integer
+            column: country_id
+        postalCode:
+            type: string
+            length: '10'
+            column: postal_code
+        isDefault:
+            type: boolean
+            column: is_default
+
+    lifecycleCallbacks: {  }

@@ -1,0 +1,18 @@
+shop_apache2:
+  container_name: promofarma_shop_apache2
+  build: ./apache2
+  volumes:
+    - /var/www/var/cache
+    - /var/www/var/logs
+  ports:
+    - 80:80
+  volumes:
+        - "../:/var/www"
+  links:
+      - shop_mysql
+
+shop_mysql:
+  container_name: promofarma_shop_mysql
+  build: ./mysql
+  ports:
+    - 3307:3306

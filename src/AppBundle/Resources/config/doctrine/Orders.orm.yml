@@ -1,0 +1,30 @@
+AppBundle\Entity\Orders:
+    type: entity
+    table: orders
+
+    id:
+        id:
+            type: integer
+            id: true
+            options:
+                unsigned: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        cartId:
+            type: integer
+            column: cart_id
+        paymentId:
+            type: integer
+            column: payment_id
+        totalAmount:
+            type: decimal
+            precision: 10
+            scale: '2'
+            column: total_amount
+        status:
+            type: string
+            columnDefinition: ENUM('pending', 'shipping', 'delivered')
+
+    lifecycleCallbacks: {  }

@@ -1,0 +1,36 @@
+AppBundle\Entity\Customer:
+    type: entity
+    table: customer
+
+    id:
+        id:
+            type: integer
+            id: true
+            options:
+                unsigned: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        name:
+            type: string
+            length: 255
+            options:
+                default: ""
+        email:
+            type: string
+            length: 255
+            options:
+                default: ""
+        creditCard:
+            column: credit_card
+            type: string
+            length: 255
+            options:
+                default: ""
+        createdAt:
+            column: created_at
+            type: datetime
+
+    lifecycleCallbacks:
+        prePersist: [setCreatedAtValue]

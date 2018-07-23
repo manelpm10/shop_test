@@ -1,0 +1,5 @@
+services:
+#  module_city.city_by_city_id.finder:
+#    public: false
+#    class: Module\City\Service\CityByCityIdFinder
+#    arguments: ["@module_city.city.repository"]

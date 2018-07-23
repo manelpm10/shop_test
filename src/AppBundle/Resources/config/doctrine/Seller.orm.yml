@@ -1,0 +1,24 @@
+AppBundle\Entity\Seller:
+    type: entity
+    table: seller
+
+    id:
+        id:
+            type: integer
+            id: true
+            options:
+                unsigned: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        name:
+            type: string
+            length: 255
+        shippingCost:
+            type: decimal
+            precision: '7'
+            scale: '2'
+            column: shipping_cost
+
+    lifecycleCallbacks: {  }
