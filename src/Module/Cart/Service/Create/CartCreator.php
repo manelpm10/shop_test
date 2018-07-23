@@ -7,6 +7,7 @@ namespace Module\Cart\Service\Create;
 use Module\Cart\Contract\Response\CartCreatedResponse;
 use Module\Cart\Domain\Cart;
 use Module\Cart\Model\CartRepository;
+use Module\Shared\Domain\CartId;
 use Module\Shared\Domain\CustomerId;
 
 final class CartCreator
@@ -18,9 +19,9 @@ final class CartCreator
         $this->repository = $repository;
     }
 
-    public function __invoke(CustomerId $customerId) : CartCreatedResponse
+    public function __invoke(CartId $cartId, CustomerId $customerId) : CartCreatedResponse
     {
-        $cart = Cart::create($customerId);
+        $cart = Cart::create($cartId, $customerId);
         $this->repository->save($cart);
 
         return new CartCreatedResponse($cart->id()->__toString());

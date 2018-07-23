@@ -18,11 +18,11 @@ final class Cart
         $this->customerId = $customerId;
     }
 
-    public static function create(CustomerId $customerId): Cart
+    public static function create(CartId $id, CustomerId $customerId): Cart
     {
         // TODO register new cart created event.
 
-        return new self(CartId::generate(), $customerId);
+        return new self($id, $customerId);
     }
 
     public function id(): CartId
