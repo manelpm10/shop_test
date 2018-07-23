@@ -13,4 +13,5 @@ interface CartItemRepository
     public function save(CartItem $cartItem): void;
     public function delete(CartItem $cartItem): void;
     public function deleteByCartId(CartId $cartId): void;
+    public function update(CartItem $cartItem): void;
 }

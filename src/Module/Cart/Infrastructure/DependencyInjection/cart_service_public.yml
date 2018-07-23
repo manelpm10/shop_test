@@ -23,6 +23,10 @@ services:
         class: Module\Cart\Service\Remove\CartItemRemover
         arguments: ["@module_cart.cart.item.repository.mysql"]
 
+    module_cart.cart.item.updater:
+        class: Module\Cart\Service\Update\CartItemUpdater
+        arguments: ["@module_cart.cart.item.repository.mysql"]
+
     module_cart.cart.items.by.cart.id.finder:
         class: Module\Cart\Service\Finder\CartItemsByCartIdFinder
         arguments: ["@module_cart.cart.item.repository.mysql"]

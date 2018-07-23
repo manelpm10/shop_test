@@ -27,14 +27,16 @@ class CartItemRepositoryMySql extends Repository implements CartItemRepository
     public function find(CartItemId $id): ?CartItem
     {
         $cartItemEntity = $this->repository->find($id);
-        if (!empty($cartItemEntity)) {
-            return new CartItem(
-                new CartItemId($cartItemEntity->getId()),
-                new CartId($cartItemEntity->getCartId()),
-                new SellerProductId($cartItemEntity->getSellerProductId()),
-                new CartItemQuantity($cartItemEntity->getQuantity())
-            );
+        if (empty($cartItemEntity)) {
+            return null;
         }
+
+        return new CartItem(
+            new CartItemId($cartItemEntity->getId()),
+            new CartId($cartItemEntity->getCartId()),
+            new SellerProductId($cartItemEntity->getSellerProductId()),
+            new CartItemQuantity($cartItemEntity->getQuantity())
+        );
     }
 
     public function findByCartId(CartId $cartId): array
@@ -79,6 +81,18 @@ class CartItemRepositoryMySql extends Repository implements CartItemRepository
             ->delete(BaseCartItem::class, 'ci')
             ->where('ci.cartId = :cartId')
             ->setParameter('cartId', $cartId)
+            ->getQuery()
+            ->execute();
+    }
+
+    public function update(CartItem $cartItem): void
+    {
+        $this->queryBuilder()
+            ->update(BaseCartItem::class, 'ci')
+            ->set('ci.quantity', ':quantity')
+            ->where('ci.id = :id')
+            ->setParameter('id', $cartItem->id())
+            ->setParameter('quantity', $cartItem->quantity())
             ->getQuery()
             ->execute();
     }

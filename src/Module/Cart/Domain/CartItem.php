@@ -59,4 +59,9 @@ final class CartItem
     {
         return $this->quantity;
     }
+
+    public function updateQuantity(CartItemQuantity $newQuantity)
+    {
+        $this->quantity = $newQuantity;
+    }
 }

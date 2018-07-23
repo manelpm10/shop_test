@@ -82,6 +82,8 @@ fos_rest:
         codes:
             'Symfony\Component\HttpKernel\Exception\NotFoundHttpException': 404
             'InvalidArgumentException': 400
+            'Module\Cart\Contract\Exception\CartItemNotInCartException': 404
         messages:
             'Symfony\Component\HttpKernel\Exception\NotFoundHttpException': true
             'InvalidArgumentException': true
+            'Module\Cart\Contract\Exception\CartItemNotInCartException': true
