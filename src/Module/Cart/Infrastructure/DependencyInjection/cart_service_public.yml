@@ -1,4 +1,7 @@
 services:
-  module_cart.cart.creator:
-    class: Module\Cart\Service\Create\CartCreator
-    arguments: ["@module_cart.cart.repository.mysql"]
+    module_cart.cart.creator:
+        class: Module\Cart\Service\Create\CartCreator
+        arguments: ["@module_cart.cart.repository.mysql"]
+    module_cart.cart.item.creator:
+        class: Module\Cart\Service\Create\CartItemCreator
+        arguments: ["@module_cart.cart.line.repository.mysql"]

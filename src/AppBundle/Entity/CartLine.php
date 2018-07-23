@@ -27,6 +27,18 @@ class CartLine
      */
     private $quantity;
 
+    function __construct(string $id, string $cartId, int $sellerProductId, int $quantity)
+    {
+        $this->id = $id;
+        $this->cartId = $cartId;
+        $this->sellerProductId = $sellerProductId;
+        $this->quantity = $quantity;
+    }
+
+    public static function create(string $id, string $cartId, int $sellerProductId, int $quantity)
+    {
+        return new self($id, $cartId, $sellerProductId, $quantity);
+    }
 
     /**
      * Get id.
