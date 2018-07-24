@@ -30,7 +30,11 @@ class CartItemUpdater
             throw new CartItemNotInCartException($cartId, $id);
         }
 
-        $cartItem->updateQuantity($quantity);
-        $this->repository->update($cartItem);
+        if (0 >= $quantity->value()) {
+            $this->repository->delete($cartItem);
+        } else {
+            $cartItem->updateQuantity($quantity);
+            $this->repository->update($cartItem);
+        }
     }
 }
